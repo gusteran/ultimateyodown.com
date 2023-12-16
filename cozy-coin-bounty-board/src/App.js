@@ -1,24 +1,12 @@
-import logo from './logo.svg';
-import yo_down_logo from './resources/UltimateYoDownLogo.png'
+import Header from './Header.js'
+import Bingo from './Bingo.js'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={yo_down_logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      <Bingo></Bingo>
     </div>
   );
 }
