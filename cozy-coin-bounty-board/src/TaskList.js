@@ -31,7 +31,7 @@ class TaskList extends React.Component {
                 //middle case
                 row.push(<div className="Box"><img src={free_seal} className="Free-Seal" alt="free" /></div>)
             }
-            const text = this.shuffledList[counter++];
+            const text = this.random_order[counter++];
             row.push(<BingoSquare key={`${i}-${j}`} text={text} />);
           }
           board.push(row);
