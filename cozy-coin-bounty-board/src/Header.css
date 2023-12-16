@@ -16,21 +16,23 @@
 @font-face {
   font-family: "Silkscreen"; 
   src: local("SilkScreen-Regular"),
-    url("./resources/Silkscreen-Regular.ttf") format("truetype");
+    url("./fonts/Silkscreen-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Silkscreen-Bold"; 
   src: local("SilkScreen-Bold"),
-    url("./resources/Silkscreen-Bold.ttf") format("truetype");
+    url("./fonts/Silkscreen-Bold.ttf") format("truetype");
 }
 
 .Header-title {
   font-family: Silkscreen-Bold;
-  font-size: 5vh;
+  font-size: 8vh;
   align-self: center;
   text-align: center;
   color: #d9cdbf;
+  margin: 0;
+  /* margin-top: 2vh; */
 }
 
 .Header {
@@ -38,4 +40,6 @@
   width: 100%;
   justify-content: center;
   vertical-align: middle;
+  padding-bottom:3vh;
+  padding-top:3vh;
 }

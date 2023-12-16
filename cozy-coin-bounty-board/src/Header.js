@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import yo_down_logo from './resources/UltimateYoDownLogo.png'
-import './resources/Silkscreen-Regular.ttf'
 import './Header.css';
 
 function Header() {
