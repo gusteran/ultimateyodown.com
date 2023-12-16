@@ -1,0 +1,41 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  /* height: 30vmin; */
+  width: 30vmin;
+  margin-right: auto;
+}
+
+.Image-offset {
+  margin-left: auto;
+  width: 30vmin;
+}
+
+@font-face {
+  font-family: "Silkscreen"; 
+  src: local("SilkScreen-Regular"),
+    url("./resources/Silkscreen-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Silkscreen-Bold"; 
+  src: local("SilkScreen-Bold"),
+    url("./resources/Silkscreen-Bold.ttf") format("truetype");
+}
+
+.Header-title {
+  font-family: Silkscreen-Bold;
+  font-size: 5vh;
+  align-self: center;
+  text-align: center;
+  color: #d9cdbf;
+}
+
+.Header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  vertical-align: middle;
+}

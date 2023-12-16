@@ -1,0 +1,25 @@
+.Bingo {
+    align-self: center;
+    border-radius: 20px;
+    border-style: double;
+    border-color: #26160c;
+    display: inline-block;
+}
+
+.Row {
+    display: flex;
+}
+
+.Box {
+    height: 12vh;
+    width: 10vw;
+    background-color: #a6806a;
+    border-radius: 10px;
+      border-color: #26160c;
+  border-style: solid;
+  border-radius: 0px;
+}
+
+.Free-Seal {
+    height: 100%;
+}
