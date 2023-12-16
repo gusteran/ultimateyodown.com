@@ -1,14 +1,10 @@
 import "./Bingo.css";
-import free_seal from "./resources/seal2.png";
-// import selected_square from './resources/circle1.png'
-import Bingo from "./Bingo";
 import React from "react";
 
 class BingoSquare extends React.Component {
   constructor() {
     super();
     this.state = { isToggleOn: true };
-    this.text = "placeholder";
 
     this.handleClick = this.handleClick.bind(this);
   }
@@ -28,7 +24,7 @@ class BingoSquare extends React.Component {
             <span className="Selected-Text">{text}</span>
           </div>
         ) : (
-          <div className="Unlicked">
+          <div className="Unclicked">
             <span className="Unselected-Text">{"Done!"}</span>
           </div>
         )}

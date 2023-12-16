@@ -1,46 +1,54 @@
 @font-face {
-  font-family: "PTSans"; 
+  font-family: "PTSans";
   src: local("PTSans-Regular"),
     url("./fonts/PTSans-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "PTSans-Bold"; 
-  src: local("PTSans-Bold"),
-    url("./fonts/PTSans-Bold.ttf") format("truetype");
+  font-family: "PTSans-Bold";
+  src: local("PTSans-Bold"), url("./fonts/PTSans-Bold.ttf") format("truetype");
 }
 
 .Bingo {
-    align-self: center;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #26160c;
-    display: inline-block;
-    border-radius: 0;
+  align-self: center;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #26160c;
+  display: inline-block;
+  border-radius: 0;
 }
 
 .Row {
-    display: flex;
+  display: flex;
 }
 
 .Box {
-    height: 12vh;
-    width: 10vw;
-    background-color: #a6806a;
-    border-width: 2px;
-    border-color: #26160c;
+  height: 12vh;
+  width: 10vw;
+  background-color: #a6806a;
+  border-width: 2px;
+  border-color: #26160c;
   border-style: solid;
   border-radius: 0px;
   vertical-align: center;
   align-items: center;
   display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Center text horizontally */
 }
 
 .Free-Seal {
-    height: 100%;
+  height: 100%;
 }
 
 .Dot {
+  justify-content: center;
+  align-items: center;
+}
+/* #8c6456 #734a32, #26160c */
+
+.Unclicked {
   height: 100%;
   width: 100%;
   /* margin: 50%; */
@@ -51,14 +59,16 @@
   align-items: center;
   vertical-align: middle;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
-/* #8c6456 #734a32, #26160c */
 
 .Selected-Text {
-    font-family: PTSans-Bold;
-    color: #d9cdbf;
+  font-family: PTSans-Bold;
+  color: #26160c;
 }
 
 .Unselected-Text {
-    font-family: PTSans;
+  font-family: PTSans-Bold;
+  color: #d9cdbf;
 }
