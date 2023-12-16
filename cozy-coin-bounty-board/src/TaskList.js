@@ -5,10 +5,44 @@ class TaskList extends React.Component {
     constructor() {
         this.random_order = Cookies.get(cookie_name);
         if (this.random_order == undefined) {
-            
+            this.random_order = this.shuffleArray(orgininal_list)
+
         }
     }
+
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    createBingoBoard() {
+        //todo put seal in the middle or [2,2]
+        const gridSize = 5;
+        const board = [];
+        let counter = 0;
+    
+        for (let i = 0; i < gridSize; i++) {
+          const row = [];
+          for (let j = 0; j < gridSize; j++) {
+            if(i == 2 && j == 2 ){
+                //middle case
+                row.push(<div className="Box"><img src={free_seal} className="Free-Seal" alt="free" /></div>)
+            }
+            const text = this.shuffledList[counter++];
+            row.push(<BingoSquare key={`${i}-${j}`} text={text} />);
+          }
+          board.push(row);
+        }
+    
+        return board;
+      }
 }
+
+
+
 
 const cookie_name = 'cozy-coin-bingo-board';
 
