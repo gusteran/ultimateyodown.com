@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import FreeSeal from "./FreeSeal";
 import BingoSquare from "./Square";
 import NewBoard from "./ShuffleBoard";
+import ShuffleBoard from "./ShuffleBoard";
 
 const randomBoardCookieName = "randomBoardCookie";
 const filledOutCookie = "filledOutCookie";
@@ -159,7 +160,7 @@ class TaskList extends React.Component {
       <div>
         <div className="Bingo">{this.createBingoBoard()}</div>
         <div>
-          <NewBoard generateNewBoard={this.generateNewBoard} />
+          <ShuffleBoard generateNewBoard={this.generateNewBoard} />
         </div>
       </div>
     );

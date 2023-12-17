@@ -9,7 +9,8 @@ function App() {
       <Bingo />
     </div>
   );
-  //Footer is in TaskList.js, im not too happy about it but im not sure how to get it here
+  //Footer is in TaskList.js's render()
+  //im not too happy about it but im not sure how to get it here
 }
 
 export default App;
