@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.fe338791.css",
-    "main.js": "/static/js/main.f75a145b.js",
+    "main.css": "/static/css/main.c46372a2.css",
+    "main.js": "/static/js/main.957a793c.js",
     "static/js/787.588393ca.chunk.js": "/static/js/787.588393ca.chunk.js",
     "static/media/UltimateYoDownLogo.png": "/static/media/UltimateYoDownLogo.3dee9c73a4e15c72d2c4.png",
     "static/media/PTSans-Bold.ttf": "/static/media/PTSans-Bold.610bc32a7e32c292ce59.ttf",
@@ -9,14 +9,13 @@
     "static/media/Silkscreen-Regular.ttf": "/static/media/Silkscreen-Regular.e7e896209cf39b6670df.ttf",
     "static/media/seal2.png": "/static/media/seal2.86a36aa4306fe60b8b0b.png",
     "static/media/Silkscreen-Bold.ttf": "/static/media/Silkscreen-Bold.825ce81561a1da06cb49.ttf",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
-    "main.fe338791.css.map": "/static/css/main.fe338791.css.map",
-    "main.f75a145b.js.map": "/static/js/main.f75a145b.js.map",
+    "main.c46372a2.css.map": "/static/css/main.c46372a2.css.map",
+    "main.957a793c.js.map": "/static/js/main.957a793c.js.map",
     "787.588393ca.chunk.js.map": "/static/js/787.588393ca.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe338791.css",
-    "static/js/main.f75a145b.js"
+    "static/css/main.c46372a2.css",
+    "static/js/main.957a793c.js"
   ]
 }
