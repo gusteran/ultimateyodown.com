@@ -16,6 +16,7 @@
   border-color: #26160c;
   display: inline-block;
   border-radius: 0;
+  background-color: #26160c;
 }
 
 .Row {
@@ -33,26 +34,56 @@
   vertical-align: center;
   align-items: center;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  text-align: center; /* Center text horizontally */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: scale(0.9);
+  transition: transform 0.3s;
+}
+
+.Box:hover {
+  transform: scale(1);
 }
 
 .Free-Seal {
   height: 100%;
 }
 
+.Shuffle {
+  font-family: PTSans-Bold;
+  background-color: #a6806a;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.Shuffle:hover {
+  color: white;
+  font-family: PTSans-Bold;
+  background-color: lightbrown;
+  transform: scale(1.1);
+}
+
+.Shuffle:active {
+  background-color: #26160c;
+  color: white;
+  transform: scale(2);
+  transition: background-color 0.1s, transform 0.1s;
+}
+
 .Dot {
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s;
 }
-/* #8c6456 #734a32, #26160c */
 
 .Unclicked {
   height: 100%;
   width: 100%;
-  /* margin: 50%; */
-  /* background-color: red; */
   background: radial-gradient(circle at center, #8c6456 0, #734a32 100%);
   border-radius: 50%;
   vertical-align: center;
@@ -64,11 +95,13 @@
 }
 
 .Selected-Text {
+  transform: scale(0.9);
   font-family: PTSans-Bold;
   color: #26160c;
 }
 
 .Unselected-Text {
+  transform: scale(0.9);
   font-family: PTSans-Bold;
   color: #d9cdbf;
 }

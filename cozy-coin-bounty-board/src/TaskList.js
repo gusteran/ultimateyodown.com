@@ -2,76 +2,10 @@ import React from "react";
 import Cookies from "js-cookie";
 import FreeSeal from "./FreeSeal";
 import BingoSquare from "./Square";
+import NewBoard from "./ShuffleBoard";
 
-class TaskList extends React.Component {
-  constructor() {
-    super();
-    this.random_order = Cookies.get(cookie_name);
-    if (this.random_order == undefined) {
-      this.random_order = this.shuffleArray(orgininal_list);
-    }
-  }
-
-  shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-
-  capitalizeFirstLetter(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
-  createBingoBoard() {
-    const gridSize = 5;
-    const half = 2;
-    const board = [];
-
-    for (let i = 0; i < gridSize; i++) {
-      const row = [];
-      for (let j = 0; j < gridSize; j++) {
-        if (i === half && j === half) {
-          //middle case
-          row.push(<FreeSeal />);
-        } else {
-          const text = this.random_order[i * gridSize + j];
-          row.push(
-            <BingoSquare
-              key={`${i}-${j}`}
-              text={this.capitalizeFirstLetter(text)}
-            />
-          );
-        }
-      }
-      board.push(row);
-    }
-
-    return board;
-  }
-
-  render() {
-    const bingoBoard = this.createBingoBoard();
-
-    return (
-      <div className="Bingo">
-        {bingoBoard.map((row, rowIndex) => (
-          <div key={`row-${rowIndex}`} className="Row">
-            {row.map((cell, cellIndex) => (
-              <div key={`cell-${rowIndex}-${cellIndex}`} className="BingoCell">
-                {cell}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    );
-  }
-}
-
-const cookie_name = "cozy-coin-bingo-board";
-
+const randomBoardCookieName = "randomBoardCookie";
+const filledOutCookie = "filledOutCookie";
 const orgininal_list = [
   "Draw a picture of a random celebrity and take a picture of it",
   "Go grab a snack, take a bite and send a picture into the discord",
@@ -121,5 +55,115 @@ const orgininal_list = [
   "Everyone cannot stop moving, must be moving forward at all time",
   "Blind your teammates and make it look like an accident",
 ];
+
+class TaskList extends React.Component {
+  constructor() {
+    super();
+    //get cookies
+    const savedRandomOrder = Cookies.get(randomBoardCookieName);
+    const savedSelected = Cookies.get(filledOutCookie);
+
+    //cookie check
+    this.state = {
+      selectedSquares: savedSelected
+        ? new Set(JSON.parse(savedSelected))
+        : new Set(),
+      randomOrder: savedRandomOrder
+        ? JSON.parse(savedRandomOrder)
+        : this.shuffleArray([...orgininal_list]),
+    };
+  }
+
+  //makes a new board, resets selections and updates cookies
+  generateNewBoard = () => {
+    const newOrder = this.shuffleArray([...orgininal_list]);
+    this.setState({
+      randomOrder: newOrder,
+      selectedSquares: new Set(),
+    });
+    Cookies.set(randomBoardCookieName, JSON.stringify(newOrder), {
+      expires: 7,
+    });
+    Cookies.remove(filledOutCookie);
+  };
+
+  //check and toggles state of the square, updates cookies
+  toggleSquare = (index) => {
+    this.setState((prevState) => {
+      const newSelectedSquares = new Set(prevState.selectedSquares);
+      if (newSelectedSquares.has(index)) {
+        newSelectedSquares.delete(index);
+      } else {
+        newSelectedSquares.add(index);
+      }
+
+      Cookies.set(filledOutCookie, JSON.stringify([...newSelectedSquares]), {
+        expires: 7,
+      });
+      return { selectedSquares: newSelectedSquares };
+    });
+  };
+
+  // shuffling
+  shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  //first letter UP
+  capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  //makes bingo board layout, so its ready to render
+  createBingoBoard() {
+    const gridSize = 5;
+    const half = 2;
+    const board = [];
+
+    for (let i = 0; i < gridSize; i++) {
+      const row = [];
+      for (let j = 0; j < gridSize; j++) {
+        const index = i * gridSize + j;
+
+        //middle seal
+        if (i === half && j === half) {
+          row.push(<FreeSeal key={`${i}-${j}`} />);
+        } else {
+          const text = this.state.randomOrder[index];
+          row.push(
+            <BingoSquare
+              index={index}
+              text={this.capitalizeFirstLetter(text)}
+              onToggle={this.toggleSquare}
+              isSelected={this.state.selectedSquares.has(index)}
+            />
+          );
+        }
+      }
+      board.push(
+        <div key={`row-${i}`} className="Row">
+          {row}
+        </div>
+      );
+    }
+
+    return board;
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="Bingo">{this.createBingoBoard()}</div>
+        <div>
+          <NewBoard generateNewBoard={this.generateNewBoard} />
+        </div>
+      </div>
+    );
+  }
+}
 
 export default TaskList;
